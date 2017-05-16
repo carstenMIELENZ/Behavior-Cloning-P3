@@ -60,8 +60,8 @@ controller.set_desired(set_speed)
 #
 # process66x200: pre-processes simulator images for NVIDIA CNN model
 # 
-# input image:   160x320x3 BGR
-# process:       crop top by 60, bottom by 20, resize to 66x200x3, color BGR2YUV
+# input image:   160x320x3 RGB
+# process:       crop top by 60, bottom by 20, resize to 66x200x3, color RGB2YUV
 # output image:  66x200x3 YUV
 #
 #################################################################################
@@ -73,7 +73,7 @@ def process66x200(image) :
         # resize
         image_p = cv2.resize(image_p,(200,66 ))
         # color convert to YUV
-        return cv2.cvtColor(image_p, cv2.COLOR_BGR2YUV)
+        return cv2.cvtColor(image_p, cv2.COLOR_RGB2YUV)
 
 
 @sio.on('telemetry')
